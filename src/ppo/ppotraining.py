@@ -62,6 +62,8 @@ def training(mg, agent):
         if result['episode_reward_max'] > reward_mean:
             checkpoint_path = agent.save()
             reward_mean = result['episode_reward_max']
+            print(f'{i:3d}: Min/Mean/Max reward: {result["episode_reward_min"]:8.1f}/{result["episode_reward_mean"]:8.1f}/{result["episode_reward_max"]:8.1f} \n')
+
 
         episode = {'n': i,
                     'episode_reward_min': result['episode_reward_min'],
@@ -70,7 +72,6 @@ def training(mg, agent):
                     'episode_len_mean': result['episode_len_mean']
                     }
         episode_data.append(episode)
-        print(f'{i:3d}: Min/Mean/Max reward: {result["episode_reward_min"]:8.1f}/{result["episode_reward_mean"]:8.1f}/{result["episode_reward_max"]:8.1f}')
     return checkpoint_path
 
 
@@ -104,10 +105,4 @@ def testing(mg, agent):
     plt.xlabel('episodes')
     plt.show()
 
-    print(f"Testing reward for microgrid {episode_reward}")
-
-# mg = env.microgrids[0]
-# agent = create_agent(mg)
-# check_point = training(mg, agent)
-# new_agent = restore(check_point)
-# testing(mg, new_agent)
+    print(f"\n Testing reward for microgrid {episode_reward} \n")
