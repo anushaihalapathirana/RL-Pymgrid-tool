@@ -9,10 +9,10 @@ import time
 """
     Q-learning implementation for pymgrid tool.
 """
-number_of_mg = 2
+number_of_mg = 3
 env=mg.MicrogridGenerator(nb_microgrid=number_of_mg)
 env.generate_microgrid(verbose=False)
-mg0 = env.microgrids[1]
+mg0 = env.microgrids[0]
 
 # print the architecture
 for i in range(env.nb_microgrids):

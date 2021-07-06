@@ -1,4 +1,4 @@
-from training-ppo import create_agent, training, restore, testing
+from ppotraining import create_agent, training, restore, testing
 from pymgrid import MicrogridGenerator as m_gen
 from pymgrid.Environments.pymgrid_cspla import MicroGridEnv
 
@@ -10,5 +10,6 @@ env.generate_microgrid(verbose=False)
 mg = env.microgrids[0]
 agent = create_agent(mg)
 check_point = training(mg, agent)
-new_agent = restore(check_point)
+new_agent = restore(mg, check_point)
 testing(mg, new_agent)
+
