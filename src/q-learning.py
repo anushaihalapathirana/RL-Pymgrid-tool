@@ -10,9 +10,15 @@ import time
     Q-learning implementation for pymgrid tool.
 """
 number_of_mg = 3
+horizon = 24
 env=mg.MicrogridGenerator(nb_microgrid=number_of_mg)
 env.generate_microgrid(verbose=False)
 mg0 = env.microgrids[0]
+# set horizon. default value is 24
+mg0.set_horizon(horizon)
+
+#set cost of co2 for a microgrid. this will set the co2 cost of operating the microgrid at each time step. Default cost of co2 is 0.1
+mg0.set_cost_co2(0.5)
 
 # print the architecture
 for i in range(env.nb_microgrids):
@@ -98,9 +104,9 @@ def training(microgrid, horizon):
     q_table = initialize_q_table(microgrid, number_of_actions)
     number_of_states = len(q_table)
 
-    number_of_episodes = 100
+    number_of_episodes = 1000
 
-    learning_rate = 0.1
+    learning_rate = 0.01
     discount_rate = 0.9
     exploration_rate = 1
 
@@ -197,7 +203,7 @@ def testing(microgrid, q_table, horizon):
 
 
 print("\n TRAINING... \n")
-q_table = training(mg0,24)
+q_table = training(mg0,horizon)
 print(" TRAINING END \n")
 
-testing(mg0, q_table, 24)
+testing(mg0, q_table, horizon)
