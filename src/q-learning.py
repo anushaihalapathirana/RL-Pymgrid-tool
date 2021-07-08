@@ -10,8 +10,8 @@ import time
     Q-learning implementation for pymgrid tool.
 """
 number_of_mg = 3
-horizon = 24
-env=mg.MicrogridGenerator(nb_microgrid=number_of_mg)
+horizon = 48
+env=mg.MicrogridGenerator(nb_microgrid=number_of_mg, random_seed = 42)
 env.generate_microgrid(verbose=False)
 mg0 = env.microgrids[0]
 # set horizon. default value is 24
@@ -195,9 +195,12 @@ def testing(microgrid, q_table, horizon):
         action = new_action
         cost_of_horizon.append(total_cost)
     
+    print('\n Total operating cost of the microgrid is : ', round(total_cost, 1), " € \n")
+    
     plt.plot(cost_of_horizon)
+    plt.title('Total operating cost')
     plt.ylabel('cost')
-    plt.xlabel('episodes')
+    plt.xlabel('horizon (in hour)')
     plt.show()
 
 

@@ -2,19 +2,17 @@ import sys
 import subprocess, re, os, sys
 
 from pymgrid import MicrogridGenerator as m_gen
+from pymgrid.Environments.pymgrid_cspla import MicroGridEnv
+
 import numpy as np
 import random 
 import matplotlib.pyplot as plt
-import os
 import pandas as pd
 import time
 import shutil
 
 import ray
 from ray.rllib.agents import ppo
-
-
-from pymgrid.Environments.pymgrid_cspla import MicroGridEnv
 
 
 number_of_mg = 1
@@ -39,6 +37,7 @@ def get_config(mg):
     config["num_gpus"] = 1
     config["env_config"]={'microgrid':mg}
     config["batch_mode"] = "complete_episodes"
+    config["vf_clip_param"] = 100.0
     return config
 
 def create_agent(mg):
@@ -47,10 +46,8 @@ def create_agent(mg):
     return agent
 
 def training(mg, agent):
-    nb_epoch = 5 # length of the training process
+    nb_epoch = 50 # length of the training process
     results = []
-    episode_data = []
-    episode_json = []
     checkpoint_path=''
     reward_mean = float('-inf')
 
@@ -58,20 +55,10 @@ def training(mg, agent):
         result = agent.train()
         results.append(result)
 
-        # add checkpoint for best max reward 
-        if result['episode_reward_max'] > reward_mean:
+        # add checkpoint for best mean reward or best max??
+        if result['episode_reward_mean'] > reward_mean:
             checkpoint_path = agent.save()
-            reward_mean = result['episode_reward_max']
-            print(f'{i:3d}: Min/Mean/Max reward: {result["episode_reward_min"]:8.1f}/{result["episode_reward_mean"]:8.1f}/{result["episode_reward_max"]:8.1f} \n')
-
-
-        episode = {'n': i,
-                    'episode_reward_min': result['episode_reward_min'],
-                    'episode_reward_mean': result['episode_reward_mean'],
-                    'episode_reward_max': result['episode_reward_max'],
-                    'episode_len_mean': result['episode_len_mean']
-                    }
-        episode_data.append(episode)
+            reward_mean = result['episode_reward_mean']
     return checkpoint_path
 
 
@@ -98,11 +85,12 @@ def testing(mg, agent):
         rewards.append(-reward)
 
     mg.print_cumsum_cost()
-    mg.print_co2()
+    # mg.print_co2()
             
     plt.plot(rewards)
+    plt.title("Cost of each step")
     plt.ylabel('cost')
     plt.xlabel('episodes')
     plt.show()
 
-    print(f"\n Testing reward for microgrid {episode_reward} \n")
+    print(f"\n Testing reward for microgrid {-episode_reward} \n")
