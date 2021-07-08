@@ -4,6 +4,7 @@ This project contains the python scripts of microgrid generation and simulation 
 
 AI techniques with Pymgrid
 * Q-learning
+* DQN
 * PPO
 * Rule-based control algorithm
 * Model predictive control
