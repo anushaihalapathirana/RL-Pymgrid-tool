@@ -127,8 +127,8 @@ def training(microgrid, horizon):
             next_action = env.get_action(action)
             status = microgrid.run(next_action)
 
-            reward = -microgrid.get_cost()
-            current_episode_cost += microgrid.get_cost()
+            reward = -microgrid.get_co2_cost()
+            current_episode_cost += microgrid.get_co2_cost()
 
             # net_load = round(microgrid.load - microgrid.pv)
             # state_of_capacity = round(microgrid.battery.soc, 1)
@@ -174,7 +174,7 @@ def testing(microgrid, q_table, horizon):
         action_dictionary = env.get_action(action)
         status = microgrid.run(action_dictionary)
 
-        cost = microgrid.get_cost()
+        cost = microgrid.get_co2_cost()
         co2 = microgrid.get_co2()
 
         total_cost += cost

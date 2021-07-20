@@ -8,7 +8,7 @@ import time
 """
     Q-learning implementation for pymgrid tool.
 """
-number_of_mg = 1
+number_of_mg = 3
 env=mg.MicrogridGenerator(nb_microgrid=number_of_mg)
 env.generate_microgrid(verbose=False)
 mg0 = env.microgrids[0]
@@ -236,7 +236,6 @@ def testing(microgrid, q_table, horizon):
         co2 = microgrid.get_co2()
 
         total_cost += cost
-        print(status['grid_co2'])
 
         print(step,"-",(int(net_load),soc),name_of_action, round(cost,1), "€", round(total_cost,1), "€", round(co2,1))
 
