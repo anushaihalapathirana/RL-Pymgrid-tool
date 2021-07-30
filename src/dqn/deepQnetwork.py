@@ -41,7 +41,7 @@ def create_dqn_agent(mg):
     return agent 
 
 def training_dqn(mg, agent):
-    nb_epoch = 50 # length of the training process
+    nb_epoch = 100 # length of the training process
     results = []
     checkpoint_path=''
     reward_mean = float('inf')
@@ -87,7 +87,10 @@ def testing_dqn(mg, agent):
         episode_reward += reward
         rewards.append(-reward)
 
-    mg.print_cumsum_cost()
+    # mg.print_cumsum_cost()
+
+    mg.print_cumsum_co2_cost()
+
     # mg.print_co2()
         
     # plt.plot(rewards)

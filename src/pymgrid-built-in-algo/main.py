@@ -1,6 +1,5 @@
 import sys
 from pymgrid import MicrogridGenerator as mg
-from pymgrid.Environments.pymgrid_cspla import MicroGridEnv
 import matplotlib.pyplot as plt
 import numpy as np
 from algorithms import print_architecture, run_benchmark, create_env
