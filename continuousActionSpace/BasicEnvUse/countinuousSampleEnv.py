@@ -11,8 +11,8 @@ env.generate_microgrid(verbose=False)
 mg = env.microgrids[0]
 
 sampleEnv = ContinuousMicrogridSampleEnv(mg)
-print("")
+
 print('state space: ', sampleEnv.observation_space)
 print('action space: ', sampleEnv.action_space)
-print("")
+
 
