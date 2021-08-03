@@ -59,6 +59,14 @@ def training(mg, agent):
         if result['episode_reward_mean'] > reward_mean:
             checkpoint_path = agent.save()
             reward_mean = result['episode_reward_mean']
+        
+        episode = {'n': i,
+                'episode_reward_min': result['episode_reward_min'],
+                'episode_reward_mean': result['episode_reward_mean'],
+                'episode_reward_max': result['episode_reward_max'],
+                'episode_len_mean': result['episode_len_mean']
+                }
+        print(f'{i:3d}: Min | Mean | Max reward: {result["episode_reward_min"]:8.1f} | {result["episode_reward_mean"]:8.1f} | {result["episode_reward_max"]:8.1f}')
     return checkpoint_path
 
 
@@ -85,6 +93,8 @@ def testing(mg, agent):
         rewards.append(-reward)
 
     mg.print_cumsum_cost()
+    mg.print_cumsum_co2_cost()
+
     # mg.print_co2()
             
     plt.plot(rewards)

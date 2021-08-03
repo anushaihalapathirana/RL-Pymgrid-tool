@@ -13,7 +13,7 @@ number_of_mg = 3
 horizon = 48
 env=mg.MicrogridGenerator(nb_microgrid=number_of_mg, random_seed = 42)
 env.generate_microgrid(verbose=False)
-mg0 = env.microgrids[0]
+mg0 = env.microgrids[2]
 # set horizon. default value is 24
 mg0.set_horizon(horizon)
 
