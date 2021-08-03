@@ -6,4 +6,4 @@ This folder contains code examples of how to access continuous Satates and conti
 
 2. [countinuousSampleEnv.py](https://github.com/anushaihalapathirana/RL-Pymgrid-tool/blob/master/continuousActionSpace/BasicEnvUse/countinuousSampleEnv.py) file - code examples of accessing countinuousSampleEnv environment
 
-3. [SafeExpEnv.py](https://github.com/anushaihalapathirana/RL-Pymgrid-tool/blob/master/continuousActionSpace/BasicEnvUse/safeExpEnv.py) file - code examples of accessing SafeExpMicrogridEnv environment
+3. [safeExpEnv.py](https://github.com/anushaihalapathirana/RL-Pymgrid-tool/blob/master/continuousActionSpace/BasicEnvUse/safeExpEnv.py) file - code examples of accessing SafeExpMicrogridEnv environment
