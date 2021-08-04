@@ -19,7 +19,7 @@ def testTD3(env):
     for i in range(n_games):
         state = env.reset()
         score = 0
-        for j in range(100):
+        for j in range(8759):
             action = agent.choose_action(state)
             new_state, reward, done, info = env.step(action)
             agent.remember(state, action, reward, new_state, done)
@@ -34,5 +34,3 @@ def testTD3(env):
     std_reward = np.std(score_history)
     print('mean cost is  %.2f' % mean_reward, 'std_cost %.3f' % std_reward)
 
-
-    # print('episode ', i, 'score %.2f' % score, 'trailing 100 games avg %.3f' % avg_score)
