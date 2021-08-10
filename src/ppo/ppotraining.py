@@ -15,10 +15,6 @@ import ray
 from ray.rllib.agents import ppo
 
 
-number_of_mg = 1
-env=m_gen.MicrogridGenerator(nb_microgrid=number_of_mg)
-env.generate_microgrid(verbose=False)
-
 ray.shutdown()
 ray.init(num_cpus=2, num_gpus=1) 
 
@@ -93,7 +89,7 @@ def testing(mg, agent):
         rewards.append(-reward)
 
     mg.print_cumsum_cost()
-    mg.print_cumsum_co2_cost()
+    # mg.print_cumsum_co2_cost()
 
     # mg.print_co2()
             

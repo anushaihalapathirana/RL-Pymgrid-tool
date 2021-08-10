@@ -12,11 +12,6 @@ import shutil
 import ray
 from ray.rllib.agents import dqn
 
-number_of_mg = 1
-env=m_gen.MicrogridGenerator(nb_microgrid=number_of_mg)
-env.generate_microgrid(verbose=False)
-mg = env.microgrids[0]
-
 ray.shutdown()
 ray.init() 
 
@@ -87,9 +82,9 @@ def testing_dqn(mg, agent):
         episode_reward += reward
         rewards.append(-reward)
 
-    # mg.print_cumsum_cost()
+    mg.print_cumsum_cost()
 
-    mg.print_cumsum_co2_cost()
+    # mg.print_cumsum_co2_cost()
 
     # mg.print_co2()
         
