@@ -31,12 +31,27 @@ AI techniques with Pymgrid
              
              dqn - Deep Q Network implementation for Pymgrid tool
                    Run maindqn.py file to train, save the model and test
+                   Can optimize co2
                    
              ppo - PPO implementation
                    Run main.py file to train, save the model and test
+                   Can optimize co2
                    
              pymgrid-built-in-algo - This folder contains the built in RL algorithms in Pymgrid tool
                                      run main.py file - this will run Rule Based Control, Model Predictive Control, and Sample Average Approximation at once and save the model. 
+                                     
+             q-learning - Q learning implementation for pymgrid tool
+                  
+                  |
+                  
+                  q-learning.py - Q learning with default cost
+                  
+                  q-learning-co2-cost-opt.py - Q learning with co2  cost optimization
+                  
+                  q-learning-action-setup.py - How to set up our own action space and use Q learning
+                  
+                  
+                  
                                
              
              
