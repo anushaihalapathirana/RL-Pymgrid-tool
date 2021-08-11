@@ -25,7 +25,20 @@ AI techniques with Pymgrid
        
        results - results of [simulation_myltiple_microgrids.py] (https://github.com/anushaihalapathirana/RL-Pymgrid-tool/blob/master/simulation_myltiple_microgrids.py) class.
        
-       src - 
+       src - This folder contains the RL algorithm implementations for Continuous state and priority list action space environment provided by the Pymgrid tool
+       
+             |
+             
+             dqn - Deep Q Network implementation for Pymgrid tool
+                   Run maindqn.py file to train, save the model and test
+                   
+             ppo - PPO implementation
+                   Run main.py file to train, save the model and test
+                   
+             pymgrid-built-in-algo - This folder contains the built in RL algorithms in Pymgrid tool
+                                     run main.py file - this will run Rule Based Control, Model Predictive Control, and Sample Average Approximation at once and save the model. 
+                               
+             
              
   ```
 
