@@ -49,11 +49,12 @@ AI techniques with Pymgrid
                   q-learning-co2-cost-opt.py - Q learning with co2  cost optimization
                   
                   q-learning-action-setup.py - How to set up our own action space and use Q learning
-                  
-                  
-                  
-                               
-             
-             
+                            
   ```
+  
+  You can found the full documentation from below links
+  
+  1. https://github.com/anushaihalapathirana/RL-Pymgrid-tool/blob/master/Pymgrid-tool-basics.pdf
+  2. https://github.com/anushaihalapathirana/RL-Pymgrid-tool/blob/master/Pymgrid-Tool-Implementation.pdf
+ 
 
